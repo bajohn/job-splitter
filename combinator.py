@@ -13,7 +13,9 @@ class CombinationMapper:
             raise ValueError(f'Given index of {i} is out of range for given parameters.')
         ret = ''
         for k in range(0, self._strLen):
-            ret = str(math.floor(i/(self._c**k) % self._c)) + ret
+            charIdx = math.floor(i/(self._c**k) % self._c)
+            char = self._chars[charIdx]
+            ret = str(char) + ret
         return ret 
 
     def getMaxIdx(self):
