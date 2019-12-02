@@ -19,3 +19,15 @@ f(A, n) = {f_1(A), f_2(A), ..., f_n(A)}
 The functions `f_i(A)` are the subsets of the whole space `A`, and a subtask is then `g(f_i(A))`, where `g` takes care of calculating and checking hashes. 
 
 To implement these `f` functions, the ideal solution would require a bijective mapping from the integers `0,1,2,..,|A|` to elements of the sample space `A`.
+
+## Deploy 
+
+`cd ./terraform`
+
+`terrafrom apply`
+
+## Local Test
+
+`cd ./`
+
+`pipenv run pytest`

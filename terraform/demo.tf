@@ -4,6 +4,6 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "tf-bucket" {
-  bucket = "tf-buctestsetesket"
+  bucket = "tf-changedname"
   acl    = "private"
 }
