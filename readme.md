@@ -31,3 +31,12 @@ To implement these `f` functions, the ideal solution would require a bijective m
 `cd ./`
 
 `pipenv run pytest`
+
+## Current state
+Use this:
+https://blog.quiltdata.com/an-easier-way-to-build-lambda-deployment-packages-with-docker-instead-of-ec2-9050cd486ba8
+to build dockerfile.
+
+Command for windows zip:
+`compress-archive` 
+
