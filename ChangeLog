@@ -1,0 +1,9 @@
+CHANGES
+=======
+
+* copy pasted docker parts, not compiled
+* remove main.py (debug script)
+* readmenotes
+* terraform hello world works
+* combination generation implemented w/ unit test
+* init commit - pipenv, pytest working

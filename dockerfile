@@ -1,10 +1,6 @@
-FROM amazonlinux:2017.03
-RUN yum -y install git \
-    python36 \
-    python36-pip \
-    zip \
-    && yum clean all
-RUN python3 -m pip install --upgrade pip \
-    && python3 -m pip install boto3
-
-
+FROM kennethreitz/pipenv as build
+ADD . /app
+WORKDIR /app
+RUN pipenv install --dev \
+ && pipenv lock -r > requirements.txt \
+ && pipenv run python setup.py bdist_wheel

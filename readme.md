@@ -40,3 +40,8 @@ to build dockerfile.
 Command for windows zip:
 `compress-archive` 
 
+## Steps to create zip that works with AWS
+- Install environment via `pipenv install`
+- Install `pbr` to simplify wheel creation
+- Create `setup.py`, `setup.cfg` in root directory.
+
