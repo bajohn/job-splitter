@@ -2,3 +2,5 @@ __pycache__
 .vscode/
 terraform/.terraform
 *.tfstate*
+package.zip
+.DS_STORE

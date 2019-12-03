@@ -10,8 +10,8 @@ resource "aws_s3_bucket" "tf-bucket" {
 
 # the below lambda code hasn't been deployed yet
 
-resource "aws_iam_role" "iam_for_lambda" {
-  name = "iam_for_lambda"
+resource "aws_iam_role" "iam_for_lambda2" {
+  name = "iam_for_lambda2"
 
   assume_role_policy = <<EOF
 {
@@ -31,9 +31,9 @@ EOF
 }
 
 resource "aws_lambda_function" "test_lambda" {
-  filename      = "lambda_function_payload.zip"
-  function_name = "lambda_function_name"
-  role          = "${aws_iam_role.iam_for_lambda.arn}"
+  filename      = "../package.zip"
+  function_name = "created_by_terraform2"
+  role          = "${aws_iam_role.iam_for_lambda2.arn}"
   handler       = "demo_handler.handler"
 
   runtime = "python3.7"

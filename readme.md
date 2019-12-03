@@ -22,6 +22,12 @@ To implement these `f` functions, the ideal solution would require a bijective m
 
 ## Deploy 
 
+-install aws cli
+
+-add aws cli credentials
+
+`brew install terraform`
+
 `cd ./terraform`
 
 `terrafrom apply`
@@ -33,10 +39,12 @@ To implement these `f` functions, the ideal solution would require a bijective m
 `pipenv run pytest`
 
 ## Current state
-Use this:
-https://blog.quiltdata.com/an-easier-way-to-build-lambda-deployment-packages-with-docker-instead-of-ec2-9050cd486ba8
-to build dockerfile.
-
-Command for windows zip:
-`compress-archive` 
-
+Needs cleanup! But 
+-bundle via ./script.sh
+-terraform apply -> too large, so
+-push to s3, import in lambda UI
+-Running currently gives this error- need to find correct way to import module-
+{
+  "errorMessage": "Unable to import module 'lambdas.demo_handler': No module named 'lambdas'",
+  "errorType": "Runtime.ImportModuleError"
+}
