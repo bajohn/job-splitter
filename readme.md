@@ -28,6 +28,8 @@ To implement these `f` functions, the ideal solution would require a bijective m
 
 `brew install terraform`
 
+`./script.sh`
+
 `cd ./terraform`
 
 `terrafrom apply`
@@ -41,10 +43,4 @@ To implement these `f` functions, the ideal solution would require a bijective m
 ## Current state
 Needs cleanup! But 
 -bundle via ./script.sh
--terraform apply -> too large, so
--push to s3, import in lambda UI
--Running currently gives this error- need to find correct way to import module-
-{
-  "errorMessage": "Unable to import module 'lambdas.demo_handler': No module named 'lambdas'",
-  "errorType": "Runtime.ImportModuleError"
-}
+-terraform apply 
