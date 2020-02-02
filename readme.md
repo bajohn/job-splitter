@@ -42,5 +42,21 @@ To implement these `f` functions, the ideal solution would require a bijective m
 
 ## Current state
 Needs cleanup! But 
--bundle via ./script.sh
--terraform apply 
+-Get file hash to work! Not updating
+-How do the worker lambdas collect their data?
+
+Options:
+
+Worker lambdas call singleton final lambda
+- This wouldn't work because requires knowledge of state (ie has the lambda been initialized)
+- No way to call existing Lambda without some other infrastructure in place
+
+Worker lambdas call store data in a database
+- How do we trigger the processing of results?
+- 
+
+Worker lambdas store data in S3
+- Triggering is easier (or at least, is known)
+
+Worker lambdas publish results to an SNS topic
+- Makes sense for right answer, how about wrong answer?

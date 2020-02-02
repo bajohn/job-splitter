@@ -8,11 +8,6 @@ resource "aws_s3_bucket" "tf-bucket" {
   acl    = "private"
 }
 
-data "aws_s3_bucket_object" "lambda_data" {
-  bucket = aws_s3_bucket.tf-bucket.bucket
-  key    = "package.zip"
-}
-
 # the below lambda code hasn't been deployed yet
 
 resource "aws_iam_role" "iam_for_lambda2" {
@@ -35,19 +30,48 @@ resource "aws_iam_role" "iam_for_lambda2" {
 EOF
 }
 
-resource "aws_lambda_function" "test_lambda" {
+resource "aws_lambda_function" "test_lambda_1" {
   # filename      = "../package.zip"
-  s3_bucket = aws_s3_bucket.tf-bucket.bucket
-  s3_key = "package.zip"
-  function_name = "created_by_terraform2"
-  role          = aws_iam_role.iam_for_lambda2.arn
-  handler       = "lambdas/demo_handler.handler"
+  # s3_bucket = aws_s3_bucket.tf-bucket.bucket
+  # s3_key = "package.zip"
+  source_code_hash = filebase64sha256("../out/demo_handler.zip")
 
+  filename      = "../out/demo_handler.zip"
+  function_name = "created_by_terraform1"
+  role          = aws_iam_role.iam_for_lambda2.arn
+  handler       = "demo_handler.handler"
+
+  layers  = ["${aws_lambda_layer_version.lib_layer.arn}"]
   runtime = "python3.7"
-  source_code_hash = filemd5("../package.zip")# base64encode(data.aws_s3_bucket_object.lambda_data.body)
   environment {
     variables = {
       foo = "bar"
     }
   }
+}
+
+resource "aws_lambda_function" "test_lambda_3" {
+  # filename      = "../package.zip"
+  # s3_bucket = aws_s3_bucket.tf-bucket.bucket
+  # s3_key = "package.zip"
+  source_code_hash = filebase64sha256("../out/demo_handler2.zip")
+  filename      = "../out/demo_handler2.zip"
+  function_name = "created_by_terraform2"
+  role          = aws_iam_role.iam_for_lambda2.arn
+  handler       = "demo_handler2.handler"
+
+  layers  = ["${aws_lambda_layer_version.lib_layer.arn}"]
+  runtime = "python3.7"
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
+}
+
+resource "aws_lambda_layer_version" "lib_layer" {
+  filename   = "../lib.zip"
+  layer_name = "libs"
+
+  compatible_runtimes = ["python3.7"]
 }

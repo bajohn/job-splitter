@@ -6,4 +6,4 @@ logger.setLevel(logging.INFO)
 
 def handler(event, context):
 
-    return console_logger('handler 1')
+    return console_logger('handler 2!')
