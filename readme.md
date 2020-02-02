@@ -42,7 +42,7 @@ To implement these `f` functions, the ideal solution would require a bijective m
 
 ## Current state
 Needs cleanup! But 
--Get file hash to work! Not updating
+-separate helpers from "lambda" code. If "lambda" code is independent, then can still do the individual zip fast upload.
 -How do the worker lambdas collect their data?
 
 Options:
