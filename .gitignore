@@ -3,4 +3,4 @@ __pycache__
 terraform/.terraform
 *.tfstate*
 .DS_STORE
-out
+out*

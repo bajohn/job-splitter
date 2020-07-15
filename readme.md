@@ -38,7 +38,7 @@ To implement these `f` functions, the ideal solution would require a bijective m
 
 `cd ./`
 
-`pipenv run pytest`
+`pipenv run pytest test_main.py`
 
 ## Current state
 Needs cleanup! But 
